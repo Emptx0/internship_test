@@ -81,7 +81,7 @@ if __name__ == "__main__":
 
     parser.add_argument("--epochs", type=int, default=15)
     parser.add_argument("--batch_size", type=int, default=256)
-    parser.add_argument("--verbose", type=bool, default=False)
+    parser.add_argument("--verbose", action="store_true")
     parser.add_argument("--save_path", type=str, default="./artifacts")
 
     args = parser.parse_args()

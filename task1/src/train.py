@@ -16,7 +16,7 @@ def main(args):
     # Load dataset
     try:
         train_dataset = datasets.MNIST(
-            root="./src/data",
+            root="./data",
             train=True,
             download=True
         )

@@ -1,0 +1,1 @@
+from .ner.inference import extract_animal

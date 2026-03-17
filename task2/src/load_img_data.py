@@ -32,7 +32,7 @@ import os
 from tqdm import tqdm
 import csv
 
-DATA_DIR = "./src/data"
+DATA_DIR = "./src/data/img_data"
 METADATA_PATH = os.path.join(DATA_DIR, "metadata.csv")
 
 dataset = load_dataset("Rapidata/Animals-10")

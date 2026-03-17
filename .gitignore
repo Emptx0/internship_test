@@ -2,5 +2,8 @@
 __pycache__/
 .ipynb_checkpoints/
 *.pyc
+
 task1/src/data/
 task1/src/artifacts
+
+task2/src/data/

@@ -38,6 +38,7 @@ True
 │   ├── load_img_data.py # Download + split + save images + metadata.csv
 │   ├── load_ner_data.py # Generate synthetic NER dataset
 │   └── pipeline.py      # Main pipeline script
+│   └── config.py
 │
 ├── task2_ner_nb.ipynb      # NER EDA & experiments
 ├── task2_img_clf_nb.ipynb  # CV EDA & experiments

@@ -1,8 +1,6 @@
 """
 Script for downloading, preparing, and indexing the Animals-10 dataset.
 
-! Run this script here: internship_test/task2
-
 Source dataset:
 https://huggingface.co/datasets/Rapidata/Animals-10
 
@@ -32,8 +30,8 @@ import os
 from tqdm import tqdm
 import csv
 
-DATA_DIR = "./src/data/img_data"
-METADATA_PATH = os.path.join(DATA_DIR, "metadata.csv")
+from src import IMG_DATA_DIR, METADATA_PATH
+
 
 dataset = load_dataset("Rapidata/Animals-10")
 dataset = dataset["train"].train_test_split(test_size=0.1)
@@ -51,7 +49,7 @@ def save_split(ds, split_name, metadata_rows):
         label_id = sample["label"]
         label = labels[label_id]
 
-        save_dir = os.path.join(DATA_DIR, split_name, label)
+        save_dir = os.path.join(IMG_DATA_DIR, split_name, label)
         os.makedirs(save_dir, exist_ok=True)
 
         filename = f"{split_name}_{i}.jpg"
@@ -68,7 +66,7 @@ def save_split(ds, split_name, metadata_rows):
 
 
 def save_metadata(rows):
-    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(IMG_DATA_DIR, exist_ok=True)
 
     with open(METADATA_PATH, "w", newline="") as f:
         writer = csv.DictWriter(

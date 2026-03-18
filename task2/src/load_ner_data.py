@@ -2,8 +2,6 @@
 Script for generating, preparing, and saving synthetic NER data
 for animal name extraction.
 
-! Run this script here: internship_test/task2
-
 The script:
 1. Generates synthetic text data using predefined templates.
 2. Adds variability using synonyms (e.g., "dog", "puppy", "canine").
@@ -24,8 +22,11 @@ CSV columns:
 import os
 import random
 import pandas as pd
+import json
 
-DATA_DIR = "./src/data/text_data"
+from src import TEXT_DATA_DIR
+
+
 N_SAMPLES = 5000
 
 animal_classes = [
@@ -91,14 +92,27 @@ def generate_dataset(n_samples):
 
     return pd.DataFrame(data)
 
+def save_synonyms():
+
+    os.makedirs(TEXT_DATA_DIR, exist_ok=True)
+
+    save_path = os.path.join(TEXT_DATA_DIR, "synonyms.json")
+
+    with open(save_path, "w") as f:
+        json.dump(synonyms, f, indent=4)
+
+    print(f"Synonyms saved to: {save_path}")
+    
 
 def save_dataset():
-    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(TEXT_DATA_DIR, exist_ok=True)
 
     df = generate_dataset(N_SAMPLES)
 
-    save_path = os.path.join(DATA_DIR, "ner_dataset.csv")
+    save_path = os.path.join(TEXT_DATA_DIR, "ner_dataset.csv")
     df.to_csv(save_path, index=False)
+
+    save_synonyms()
 
     print(f"Dataset saved to: {save_path}")
     print(f"Total samples: {len(df)}")

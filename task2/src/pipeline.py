@@ -1,6 +1,6 @@
 import argparse
 
-from models import extract_animal, predict_image
+from models import extract_animal, get_img_result
 
 
 def main(args):
@@ -15,13 +15,11 @@ def main(args):
     ner_animal = ner_animals[0]
 
     # image -> animal
-    image_animal = predict_image(args.image_path)
+    image_animal = get_img_result(args.image_path)
 
-    result = ner_animal.lower() == image_animal.lower()
+    result = ner_animal.lower() in image_animal.lower()
 
-    print("TEXT ANIMAL:", ner_animal)
-    print("IMAGE ANIMAL:", image_animal)
-    print("RESULT:", result)
+    print(result)
 
 
 if __name__ == "__main__":

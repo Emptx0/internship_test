@@ -10,7 +10,7 @@ from src import NER_MODEL_DIR, RESNET_MODEL_DIR, RESNET_CLASSES_DIR
 def main(args):
 
     try:
-        # --- NER ---
+        # NER
         ner_args = argparse.Namespace(
             text=args.text,
             model_path=NER_MODEL_DIR
@@ -22,7 +22,7 @@ def main(args):
             print(False)
             return
 
-        # --- CV ---
+        # CV
         cv_args = argparse.Namespace(
             image_path=args.image_path,
             model_path=RESNET_MODEL_DIR,
@@ -31,7 +31,7 @@ def main(args):
 
         image_pred = get_img_result(cv_args)
 
-        # --- Compare ---
+        # Compare
         result = any(a.lower() in image_pred.lower() for a in animals)
 
         print(result)
